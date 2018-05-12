@@ -14,11 +14,8 @@ Follow the wiki instructions to install the Raven II source code
 # find IP addresses
 get the raven's ip address by running on the raven machine (or use URL if you know it)
 
-    ifconfig
-or 
-
-    ip addr
-and on the hose computer do the same thing
+`ifconfig` or `ip addr`
+and on the host computer do the same thing
 
 ## Setup container
 Follow Docker instructions to install Docker
@@ -27,7 +24,9 @@ Follow Docker instructions to install Docker
     docker pull abrahq:raven_terminal:latest
 or build from source file (recommended <IMname>=raven <tag>=latest)
 
-    docker build -t <IMname>:<tag> <path to dockerfile>
+    git clone https://github.com/quinnabrvau/dockerfiles.git
+    cd dockerfiles/ravenTerminal
+    docker build -t <IMname>:<tag> <path to dockerfile> .
 
 # Create container with mount and network conection (you can change the ip address if you desire, you will just need to know it later)
 
