@@ -1,0 +1,74 @@
+
+### Running the Raven II from a container
+
+## Setup Raven II computer
+
+# Install Raven II on machine
+Follow the wiki instructions to install the Raven II source code
+
+# find IP address
+get the raven's ip address by running on the raven machine (or use URL if you know it)
+
+    ifconfig
+
+## Setup container
+Follow Docker instructions to install Docker
+
+# Download image
+    docker pull abrahq:raven_terminal:latest
+or build from source file (recommended <IMname>=raven <tag>=latest)
+
+    docker build -t <IMname>:<tag> <path to dockerfile>
+
+# Create container with mount and network conection (you can change the ip address if you desire, you will just need to know it later)
+
+    docker create --mount <path to work>:/root/catkin_ws/src/<desired folder name> \
+                  --name raven_terminal --ip 172:17.0.1 \
+                  <IMname>
+
+# Start container
+
+    docker start -ai  <containerID>
+
+*start a second terminal to the same container*
+
+    docker exec -i <containerID> bash
+
+
+# ssh into Raven II
+    ssh user@<ip address>
+*in ssh window*
+
+refer to https://github.com/melodysu83/AutoCircle_generater
+
+
+## Run Project
+
+# start the Raven II
+*in the SSH window*
+
+    sudo -i # if neccessary
+    /etc/init.d/brl_usb start
+    roscd raven_2
+    roslaunch raven_2 raven_2.launch
+Home the robot (take it out of estop and let it home)
+
+*in local terminal*
+check that the container is receiving the ros messages
+
+    rostopic list
+    rostopic echo /ravenstate -c
+this should all the raven messages and then the current raven state
+
+# start project
+stop rostopic with ctl+c
+
+    roscd <project>
+    roslaunch project project.launch
+
+
+
+
+
+
+
