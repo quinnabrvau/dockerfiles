@@ -12,7 +12,7 @@ or build from source (not recommended). Run
 The simulation has a graphical component so in order to get around this requirement, we are going to use jupyter network to allow us to view the results in the host machine. 
 
     docker run -it --rm -p 8888:8888 <TAG>
-*<TAG> can be replaced with abrahq/raven_simulation if you used pull*
+*`<TAG>` can be replaced with abrahq/raven_simulation if you used pull*
 
 This will return a line that looks like 
 
